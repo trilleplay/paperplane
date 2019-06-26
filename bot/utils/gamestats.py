@@ -12,7 +12,6 @@ async def clash_royale_fetch(client, usertag: str):
     'cache-control': "no-cache"
     }
     async with client.get(f"https://api.clashroyale.com/v1/players/%23{urllib.parse.quote(usertag)}", headers=headers) as resp:
-        # here it is
         if resp.status == 403:
             raise Forbidden("Invalid Authorization.")
         if resp.status == 404:
@@ -42,13 +41,6 @@ async def fortnite_fetch(client, platform: str, username: str):
     'cache-control': "no-cache"
     }
     async with client.get(f"https://api.fortnitetracker.com/v1/profile/{platform}/{urllib.parse.quote(username)}", headers=headers) as resp:
-        # here it is
-        json = await resp.json()
-        try:
-            if json["error"] == "Player Not Found":
-                raise NotFound()
-        except KeyError:
-            pass
         if resp.status == 401:
             raise Forbidden("Invalid Authorization.")
         if resp.status == 500:
@@ -57,6 +49,13 @@ async def fortnite_fetch(client, platform: str, username: str):
             raise Unavailable()
         if resp.status == 429:
             raise RateLimit()
+        # Why can't you just return 404 here API and make my life easier.
+        json = await resp.json()
+        try:
+            if json["error"] == "Player Not Found":
+                raise NotFound()
+        except KeyError:
+            pass
         if resp.status == 200:
             return await resp.json()
         else:
