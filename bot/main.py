@@ -10,7 +10,7 @@ async def get_prefix(bot, message):
 
 bot = commands.Bot(command_prefix=get_prefix)
 
-cogs = ["cogs.basic", "cogs.gamestats"]
+cogs = ["cogs.basic", "cogs.gamestats.clash_royale", "cogs.gamestats.fortnite"]
 
 for cog in cogs:
     bot.load_extension(cog)

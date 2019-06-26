@@ -12,3 +12,6 @@ class Unavailable(Exception):
 
 class RateLimit(Exception):
     pass
+
+class InvalidPlatform(Exception):
+    pass
