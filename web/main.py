@@ -10,7 +10,7 @@ def index():
     return render_template("index.html", invite_url=web_config["web"]["bot_invite"])
 
 @app.route("/added")
-def index():
+def added():
     return render_template("index.html", invite_url=web_config["web"]["bot_invite"])
 
 @app.route("/riot.txt")
