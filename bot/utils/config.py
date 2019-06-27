@@ -11,3 +11,6 @@ async def clash_royale():
 
 async def tracker_network():
     return(bot_config["games"]["tracker_network"])
+
+async def riot_games():
+    return(bot_config["games"]["riot_games"])
