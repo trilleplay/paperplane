@@ -18,4 +18,4 @@ def riot_verify():
     return Response(web_config["web"]["riot_games_key"], mimetype='text/plain')
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0' port=web_config["web"]["port"])
+    app.run(host='0.0.0.0', port=web_config["web"]["port"])
