@@ -11,6 +11,8 @@ class Config(commands.Cog, name="Configure"):
         guild = await GuildSettings.get(guild_id=ctx.guild.id)
         if prefix is None:
             await ctx.send(f"Since you did not provide your new prefix, here is your current prefix: ``{await clean_escape(guild.prefix)}``")
+        elif len(prefix) > 5:
+            await ctx.send("A prefix can't be longer then five characters, sorry :(")
         else:
             guild.prefix = prefix
             await guild.save()

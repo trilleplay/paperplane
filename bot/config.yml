@@ -1,2 +1,15 @@
 bot:
   token: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+  support: "INVITE_CODE_HERE"
+games:
+  clash_royale: "Key from https://developer.clashroyale.com/ here"
+  tracker_network: "Key from https://tracker.gg/developers here"
+  riot_games: "Key from https://developer.riotgames.com/ here"
+  destiny: "Key from https://www.bungie.net/en/Application here"
+  destiny_user_agent: "User Agent following the format found https://github.com/Bungie-net/api#are-there-any-restrictions-on-the-api here."
+postgres:
+  username: username
+  password: password
+  server: localhost
+  port: 5432
+  database: paperplane
