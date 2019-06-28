@@ -14,6 +14,7 @@ class Division_2(commands.Cog, name="The Division 2"):
 
     @commands.command()
     async def division(self, ctx, platform: Division_2PlatformConverter = None, *, username: str = None):
+        """Provides stats about a The Division 2 player, valid platforms are Uplay, PS4 and Xbox. syntax: (prefix)division <platform> <username>"""
         if platform is None:
             await ctx.send("Oops, it seems you forgot to specify what platform you wanted to fetch stats from. Valid platforms are: ``uplay``, ``ps4`` and ``xbox``.")
             return

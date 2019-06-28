@@ -21,6 +21,11 @@ async def on_connect():
 async def on_ready():
     print("Bot is READY.")
 
+@bot.listen()
+async def on_guild_join(guild):
+    if guild.system_channel:
+        await guild.system_channel.send(f"Heya!\nThanks for adding me, to get a list of all commands run ``!help``. Don't like the current prefix? No problem you can change it by sending ``!set_pefix NEW_AND_AWESOME_PREFIX_HERE``, or if you forget your prefix: ``@{str(bot.user)} set_pefix NEW_AND_AWESOME_PREFIX_HERE``")
+
 
 cogs = ["cogs.basic", "cogs.config", "cogs.gamestats.clash_royale", "cogs.gamestats.fortnite", "cogs.gamestats.League_of_Legends", "cogs.gamestats.Destiny", "cogs.gamestats.apex", "cogs.gamestats.division_2"]
 

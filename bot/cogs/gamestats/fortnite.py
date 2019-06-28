@@ -13,8 +13,9 @@ class Fortnite(commands.Cog, name="Fortnite"):
 
     @commands.command()
     async def fortnite(self, ctx, platform: str = None, *, username: str = None):
+        """Provides stats about a Fortnite player, valid platforms are PC, PS4 and Xbox. syntax: (prefix)division <platform> <username>"""
         if platform is None:
-            await ctx.send("Oops, it seems you forgot to specify what platform you wanted to fetch stats from.")
+            await ctx.send("Oops, it seems you forgot to specify what platform you wanted to fetch stats from, valid platforms are: ``pc``, ``ps4`` and ``xbox``.")
             return
         if platform.lower() == "pc":
             request_platform = "pc"

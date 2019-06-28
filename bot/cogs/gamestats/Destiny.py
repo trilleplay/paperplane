@@ -14,11 +14,12 @@ class Destiny_2(commands.Cog, name="Destiny 2"):
 
     @commands.command()
     async def destiny(self, ctx, platform: BungieMembershipTypeConverter = None, *, username: str = None):
+        """Provides basic stats about a Destiny 2 player, valid platforms are Xbox, PS4 and Blizzard. syntax: (prefix)destiny <platform> <username>"""
         if platform is None:
-            await ctx.send("Oops, it seems you forgot to specify what platform you wanted to fetch stats from.")
+            await ctx.send("Oops, it seems you forgot to specify what platform you wanted to fetch stats from, valid platforms are: ``Blizzard``, ``Xbox`` and ``PS4``.")
             return
         if platform == "invalid":
-            await ctx.send("Oops, the platform you specified seems to be invalid, valid platforms are: ``Blizzard``, ``Xbox`` and ``PSN``.")
+            await ctx.send("Oops, the platform you specified seems to be invalid, valid platforms are: ``Blizzard``, ``Xbox`` and ``PS4``.")
             return
         if username is None:
             await ctx.send("Oops, it seems you forgot to specify what username you wanted to look up.")

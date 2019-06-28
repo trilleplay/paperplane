@@ -14,8 +14,9 @@ class Apex(commands.Cog, name="Apex Legends"):
 
     @commands.command()
     async def apex(self, ctx, platform: ApexPlatformConverter = None, *, username: str = None):
+        """Provides stats about a Apex Legends player, valid platforms are Xbox, PS4 and PC. syntax: (prefix)apex <platform> <username>"""
         if platform is None:
-            await ctx.send("Oops, it seems you forgot to specify what platform you wanted to fetch stats from.")
+            await ctx.send("Oops, it seems you forgot to specify what platform you wanted to fetch stats from, valid platforms are: ``pc``, ``ps4`` and ``xbox``.")
             return
         if platform == "invalid":
             await ctx.send("Platform specified is invalid, valid platforms are: ``pc``, ``ps4`` and ``xbox``.")

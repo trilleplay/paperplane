@@ -13,14 +13,16 @@ class ClashRoyale(commands.Cog, name="Clash Royale"):
 
     @commands.group()
     async def croyale(self, ctx):
+        """Base command for Clash Royale"""
         if ctx.invoked_subcommand is None:
-            await ctx.send('No type specified, valid types are ``player``.')
+            await ctx.send('No arguments specified, valid arguments are ``player``.')
 
 
     @croyale.command()
     async def player(self, ctx, usertag: str = None):
+        """Provides stats about a Clash Royale player, syntax: (prefix)croyale player <usertag>"""
         if usertag is None:
-            await ctx.send("Oops, it seems you forgot to specify what usertag you wanted to look up.")
+            await ctx.send("Oops, it seems you forgot to specify what usertag you wanted to look up.\nYou get your usertag by simply start the game, and from there navigate into your player profile, and under your username you should see a # followed by a few letters, those letters is your usertag!")
             return
         async with ctx.typing():
             try:
@@ -29,7 +31,7 @@ class ClashRoyale(commands.Cog, name="Clash Royale"):
                 await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{await invite()}\nIf you're the bot maintainer please make sure your API keys are valid.")
                 return
             except NotFound:
-                await ctx.send("A player with that tag could not be found, **Note:** we are asking you for your player tag (excluding the #) **not** your username!")
+                await ctx.send("A player with that tag could not be found, **Note:** we are asking you for your player tag (**excluding the #**) **not** your username!\nYou get your usertag by simply start the game, and from there navigate into your player profile, and under your username you should see a # followed by a few letters, those letters is your usertag!")
                 return
             except Unavailable:
                 await ctx.send("It seems that Clash Royales API is having problems at the moment :(\nPlease try again in a few moments.")

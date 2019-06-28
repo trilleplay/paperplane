@@ -14,11 +14,12 @@ class League_of_Legends(commands.Cog, name="League of Legends"):
 
     @commands.command()
     async def league(self, ctx, region: LeagueRegionConverter = None, *, username: LeagueUserConverter = None):
+        """Provides stats about a League of Legends player, valid regions can be found on https://developer.riotgames.com/regional-endpoints.html (Service Region). syntax: (prefix)division <region> <username>"""
         if region is None:
-            await ctx.send("Oops, it seems you forgot to specify what region you wanted to fetch stats from.")
+            await ctx.send("Oops, it seems you forgot to specify what region you wanted to fetch stats from.\nValid regions can be found on https://developer.riotgames.com/regional-endpoints.html (Service Region)")
             return
         if region == "invalid":
-            await ctx.send("Oops, the region you specified seems to be invalid.")
+            await ctx.send("Oops, the region you specified seems to be invalid.\nValid regions can be found on https://developer.riotgames.com/regional-endpoints.html (Service Region)")
             return
         if username is None:
             await ctx.send("Oops, it seems you forgot to specify what username you wanted to look up.")

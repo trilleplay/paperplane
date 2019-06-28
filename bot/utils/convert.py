@@ -57,7 +57,7 @@ class BungieMembershipTypeConverter(commands.Converter):
     async def convert(self, ctx, argument):
         BungieMembershipType_list = {
             "XBOX": {"value": 1, "name": "Xbox"},
-            "PSN": {"value": 2, "name": "PSN"},
+            "PS4": {"value": 2, "name": "PSN"},
             "BLIZZARD": {"value": 4, "name": "Blizzard"}
         }
         try:
