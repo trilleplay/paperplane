@@ -17,7 +17,7 @@ class LeagueRegionConverter(commands.Converter):
             "RU": {"api": "RU", "name": "Russia"}
         }
         try:
-            return(region_list[f"{argument}"])
+            return(region_list[f"{argument.upper()}"])
         except KeyError:
             return("invalid")
 
