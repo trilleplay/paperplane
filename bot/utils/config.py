@@ -14,3 +14,6 @@ async def tracker_network():
 
 async def riot_games():
     return(bot_config["games"]["riot_games"])
+
+async def postgres():
+    return(f"postgres://{bot_config['postgres']['username']}:{bot_config['postgres']['password']}@{bot_config['postgres']['server']}:{bot_config['postgres']['port']}/{bot_config['postgres']['database']}")
