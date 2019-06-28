@@ -33,7 +33,8 @@ class Fortnite(commands.Cog, name="Fortnite"):
             try:
                 data = await fortnite_fetch(self.aiohttpclient, request_platform, username)
             except Forbidden:
-                await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{await invite()}\nIf you're the bot maintainer please make sure your API keys are valid.")
+                invite_key = await invite()
+                await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{invite_key}\nIf you're the bot maintainer please make sure your API keys are valid.")
                 return
             except NotFound:
                 await ctx.send("A player with that username could not be found, **Note:** we are asking you for your epic username, and its also important that the platform paramater is correct aswell.")

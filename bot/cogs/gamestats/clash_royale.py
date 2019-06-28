@@ -28,7 +28,8 @@ class ClashRoyale(commands.Cog, name="Clash Royale"):
             try:
                 data = await clash_royale_fetch(self.aiohttpclient, usertag)
             except Forbidden:
-                await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{await invite()}\nIf you're the bot maintainer please make sure your API keys are valid.")
+                invite_key = await invite()
+                await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{invite_key}\nIf you're the bot maintainer please make sure your API keys are valid.")
                 return
             except NotFound:
                 await ctx.send("A player with that tag could not be found, **Note:** we are asking you for your player tag (**excluding the #**) **not** your username!\nYou get your usertag by simply start the game, and from there navigate into your player profile, and under your username you should see a # followed by a few letters, those letters is your usertag!")

@@ -28,7 +28,8 @@ class Division_2(commands.Cog, name="The Division 2"):
             try:
                 data = await division_2_fetch(self.aiohttpclient, platform["value"], username)
             except Forbidden:
-                await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{await invite()}\nIf you're the bot maintainer please make sure your API keys are valid.")
+                invite_key = await invite()
+                await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{invite_key}\nIf you're the bot maintainer please make sure your API keys are valid.")
                 return
             except NotFound:
                 await ctx.send("A player with that username could not be found, **Note:** make sure your username is 100% correct, and its also important that the platform paramater is correct aswell. Otherwise we cant find it :(")

@@ -31,7 +31,8 @@ class League_of_Legends(commands.Cog, name="League of Legends"):
             try:
                 data = await league_fetch(self.aiohttpclient, region["api"], username)
             except Forbidden:
-                await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{await invite()}\nIf you're the bot maintainer please make sure your API keys are valid.")
+                invite_key = await invite()
+                await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{invite_key}\nIf you're the bot maintainer please make sure your API keys are valid.")
                 return
             except NotFound:
                 await ctx.send("A player with that username could not be found, make sure you spellt everything correctly, its also important that the platform paramater is correct aswell.")
