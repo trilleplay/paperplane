@@ -46,7 +46,8 @@ class Division_2(commands.Cog, name="The Division 2"):
             except InvalidPlatform:
                 await ctx.send("Shit, something just happend that there are checks in place for how did this happen, please open an issue here: <https://github.com/trilleplay/paperplane/issues>.")
                 return
-            embed = discord.Embed(title=f"{self.bot.user.name} showing lifetime stats for Division 2 player: {await clean_escape(data['data']['metadata']['platformUserHandle'])}, on platform: {await clean_escape(platform['name'])}")
+            escaped_player_handle = await clean_escape(data['data']['metadata']['platformUserHandle'])
+            embed = discord.Embed(title=f"{self.bot.user.name} showing lifetime stats for Division 2 player: {escaped_player_handle}, on platform: {platform['name']}")
             embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url_as(static_format='png', size=1024))
             embed.set_thumbnail(url=data['data']['metadata']['avatarUrl'])
             embed.set_footer(text=f"{self.bot.user.name} is in no way endorsed by Ubisoft. Ubisoft are the trademark holders of the Division 2, and is in no way responsible for {self.bot.user.name} or the content it provides.")

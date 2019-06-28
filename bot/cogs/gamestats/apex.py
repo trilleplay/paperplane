@@ -46,7 +46,8 @@ class Apex(commands.Cog, name="Apex Legends"):
             except InvalidPlatform:
                 await ctx.send("Shit, something just happend that there are checks in place for how did this happen, please open an issue here: <https://github.com/trilleplay/paperplane/issues>.")
                 return
-            embed = discord.Embed(title=f"{self.bot.user.name} showing lifetime stats for Apex Legends player: {await clean_escape(data['data']['metadata']['platformUserHandle'])}, on platform: {await clean_escape(platform['name'])}")
+            escaped_player_handle = await clean_escape(data['data']['metadata']['platformUserHandle'])
+            embed = discord.Embed(title=f"{self.bot.user.name} showing lifetime stats for Apex Legends player: {escaped_player_handle}, on platform: {platform['name']}")
             embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url_as(static_format='png', size=1024))
             embed.set_thumbnail(url=data['data']['metadata']['avatarUrl'])
             for stat in data['data']['stats']:

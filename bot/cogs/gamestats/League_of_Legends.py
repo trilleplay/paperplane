@@ -49,7 +49,8 @@ class League_of_Legends(commands.Cog, name="League of Legends"):
             except InvalidPlatform:
                 await ctx.send("Shit, something just happend that there are checks in place for how did this happen, please open an issue here: <https://github.com/trilleplay/paperplane/issues>.")
                 return
-            embed = discord.Embed(title=f"{self.bot.user.name} showing stats for League of Legends player: {await clean_escape(data['username'])}, on region: {await clean_escape(region['name'])}")
+            escaped_player_handle = await clean_escape(data['username'])
+            embed = discord.Embed(title=f"{self.bot.user.name} showing stats for League of Legends player: {escaped_player_handle}, on region: {region['name']}")
             embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url_as(static_format='png', size=1024))
             embed.set_thumbnail(url=f"https://ddragon.leagueoflegends.com/cdn/9.13.1/img/profileicon/{data['profile_image']}.png")
             embed.set_footer(text=f"{self.bot.user.name} isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of Riot Games or anyone officially involved in producing or managing League of Legends. League of Legends and Riot Games are trademarks or registered trademarks of Riot Games, Inc. League of Legends © Riot Games, Inc.")

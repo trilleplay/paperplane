@@ -51,7 +51,8 @@ class Fortnite(commands.Cog, name="Fortnite"):
             except InvalidPlatform:
                 await ctx.send("Shit, something just happend that there are checks in place for how did this happen, please open an issue here: <https://github.com/trilleplay/paperplane/issues>.")
                 return
-            embed = discord.Embed(title=f"{self.bot.user.name} showing lifetime stats for Fortnite player: {await clean_escape(data['epicUserHandle'])}, on platform: {await clean_escape(data['platformNameLong'])}")
+            escaped_player_handle = await clean_escape(data['epicUserHandle'])
+            embed = discord.Embed(title=f"{self.bot.user.name} showing lifetime stats for Fortnite player: {escaped_player_handle}, on platform: {data['platformNameLong']}")
             embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url_as(static_format='png', size=1024))
             embed.set_footer(text="Portions of the materials used are trademarks and/or copyrighted works of Epic Games, Inc. All rights reserved by Epic. This material is not official and is not endorsed by Epic.")
             for stat in data["lifeTimeStats"]:

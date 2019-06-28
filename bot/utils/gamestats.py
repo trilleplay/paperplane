@@ -70,7 +70,8 @@ async def destiny_fetch(client, botname, membershipType, username: str):
                 profile_json = await resp.json()
             else:
                 raise Unknown()
-        embed = discord.Embed(title=f'{botname} showing stats for Destiny 2 player: {await clean_escape(username)}, on platform: {await clean_escape(membershipType["name"])}')
+        escaped_player_handle = await clean_escape(username)
+        embed = discord.Embed(title=f'{botname} showing stats for Destiny 2 player: {escaped_player_handle}, on platform: {membershipType["name"]}')
         embed.set_footer(text="© Bungie, Inc. All rights reserved. Destiny, the Destiny Logo, Bungie and the Bungie logo are among the trademarks of Bungie, Inc.")
         embed.add_field(name="Last time played", value=profile_json["Response"]["profile"]["data"]["dateLastPlayed"])
         minutesplayed = 0
@@ -116,8 +117,9 @@ async def destiny_fetch(client, botname, membershipType, username: str):
         return(embed)
 
 async def clash_royale_fetch(client, usertag: str):
+    stupid_f_strings = await clash_royale()
     headers = {
-    'Authorization': f"Bearer {await clash_royale()}",
+    'Authorization': f"Bearer {stupid_f_strings}",
     'cache-control': "no-cache"
     }
     async with client.get(f"https://api.clashroyale.com/v1/players/%23{urllib.parse.quote(usertag)}", headers=headers) as resp:
