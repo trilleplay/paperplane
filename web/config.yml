@@ -1,0 +1,3 @@
+web:
+  bot_invite: "Authorization link for adding your bot"
+  riot_games_key: "Verification key for Riot Games API."
