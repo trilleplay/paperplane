@@ -28,3 +28,15 @@ class LeagueUserConverter(commands.Converter):
             return(argument)
         else:
             return False
+
+class BungieMembershipTypeConverter(commands.Converter):
+    async def convert(self, ctx, argument):
+        BungieMembershipType_list = {
+            "XBOX": {"value": 1, "name": "Xbox"},
+            "PSN": {"value": 2, "name": "PSN"},
+            "BLIZZARD": {"value": 4, "name": "Blizzard"}
+        }
+        try:
+            return(BungieMembershipType_list[f"{argument.upper()}"])
+        except KeyError:
+            return("invalid")

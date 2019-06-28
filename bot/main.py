@@ -22,7 +22,7 @@ async def on_ready():
     print("Bot is READY.")
 
 
-cogs = ["cogs.basic", "cogs.config", "cogs.gamestats.clash_royale", "cogs.gamestats.fortnite", "cogs.gamestats.League_of_Legends"]
+cogs = ["cogs.basic", "cogs.config", "cogs.gamestats.clash_royale", "cogs.gamestats.fortnite", "cogs.gamestats.League_of_Legends", "cogs.gamestats.Destiny"]
 
 
 for cog in cogs:
