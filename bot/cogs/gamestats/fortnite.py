@@ -16,11 +16,11 @@ class Fortnite(commands.Cog, name="Fortnite"):
         if platform is None:
             await ctx.send("Oops, it seems you forgot to specify what platform you wanted to fetch stats from.")
             return
-        if platform == "pc":
+        if platform.lower() == "pc":
             request_platform = "pc"
-        elif platform == "ps4":
+        elif platform.lower() == "ps4":
             request_platform = "psn"
-        elif platform == "xbox":
+        elif platform.lower() == "xbox":
             request_platform = "xbl"
         else:
             await ctx.send("Platform specified is invalid, valid platforms are: ``pc``, ``ps4`` and ``xbox``.")
