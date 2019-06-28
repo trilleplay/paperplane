@@ -1,7 +1,7 @@
 # paperplane
 A game statistics bot made for Discord during the Hack week event!
 
-⚠️LEAGUE OF LEGENDS IS DISABLED ON THE HOSTED INSTANCE WHILE WE AWAIT PRODUCTION LEVEL ACCESS FROM RIOT GAMES⚠️
+⚠️LEAGUE OF LEGENDS IS DISABLED ON THE HOSTED INSTANCE WHILE WE AWAIT PRODUCTION LEVEL ACCESS FROM RIOT GAMES⚠️  
 Here's a link to invite paperplane to your server: https://discordapp.com/api/oauth2/authorize?client_id=592772110590541873&permissions=52224&scope=bot  
 And a fancy link to our website: https://paperplane.farkasdev.com
 
