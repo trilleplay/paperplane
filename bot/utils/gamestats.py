@@ -10,7 +10,7 @@ import datetime
 with open("config.yml") as file:
     bot_config = yaml.load(file, Loader=yaml.FullLoader)
 
-async def destiny_fetch(client, membershipType, username: str):
+async def destiny_fetch(client, botname, membershipType, username: str):
     headers = {
     'X-API-Key': await destiny(),
     'User-Agent': await destiny_user_agent(),
@@ -70,7 +70,7 @@ async def destiny_fetch(client, membershipType, username: str):
                 profile_json = await resp.json()
             else:
                 raise Unknown()
-        embed = discord.Embed(title=f'Paperplane showing stats for Destiny 2 player: {await clean_escape(username)}, on platform: {await clean_escape(membershipType["name"])}')
+        embed = discord.Embed(title=f'{botname} showing stats for Destiny 2 player: {await clean_escape(username)}, on platform: {await clean_escape(membershipType["name"])}')
         embed.set_footer(text="© Bungie, Inc. All rights reserved. Destiny, the Destiny Logo, Bungie and the Bungie logo are among the trademarks of Bungie, Inc.")
         embed.add_field(name="Last time played", value=profile_json["Response"]["profile"]["data"]["dateLastPlayed"])
         minutesplayed = 0
@@ -236,6 +236,37 @@ async def apex_fetch(client, platform: str, username: str):
         'cache-control': "no-cache"
     }
     async with client.get(f"https://public-api.tracker.gg/v1/apex/standard/profile/{platform}/{urllib.parse.quote(username)}", headers=headers) as resp:
+        if resp.status == 401:
+            raise Forbidden("Invalid Authorization.")
+        if resp.status == 500:
+            raise Unknown()
+        if resp.status == 503:
+            raise Unavailable()
+        if resp.status == 429:
+            raise RateLimit()
+        # Why can't you just return 404 here API and make my life easier.
+        json = await resp.json()
+        try:
+            error = json["errors"]
+            if error[0]["code"] == "CollectorResultStatus::NotFound":
+                raise NotFound()
+        except KeyError:
+            pass
+        if resp.status == 200:
+            return await resp.json()
+        else:
+            raise Unknown()
+
+async def division_2_fetch(client, platform: str, username: str):
+    if platform in ('uplay', 'xbl', 'psn'):
+        pass
+    else:
+        raise InvalidPlatform("Platform is not: origin, xbl or psn.")
+    headers = {
+        'TRN-Api-Key': await tracker_network(),
+        'cache-control': "no-cache"
+    }
+    async with client.get(f"https://public-api.tracker.gg/v1/division-2/standard/profile/{platform}/{urllib.parse.quote(username)}", headers=headers) as resp:
         if resp.status == 401:
             raise Forbidden("Invalid Authorization.")
         if resp.status == 500:

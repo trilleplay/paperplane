@@ -30,7 +30,7 @@ class Apex(commands.Cog, name="Apex Legends"):
                 await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{await invite()}\nIf you're the bot maintainer please make sure your API keys are valid.")
                 return
             except NotFound:
-                await ctx.send("A player with that username could not be found, **Note:** we are asking you for your epic username, and its also important that the platform paramater is correct aswell.")
+                await ctx.send("A player with that username could not be found, **Note:** make sure your username is 100% correct, and its also important that the platform paramater is correct aswell. Otherwise we cant find it :C")
                 return
             except Unavailable:
                 await ctx.send("It seems that Tracker Networks API is having problems at the moment :(\nPlease try again in a few moments.")
@@ -43,8 +43,9 @@ class Apex(commands.Cog, name="Apex Legends"):
                 return
             except InvalidPlatform:
                 await ctx.send("Shit, something just happend that there are checks in place for how did this happen, please open an issue here: <https://github.com/trilleplay/paperplane/issues>.")
-            embed = discord.Embed(title=f"Paperplane showing lifetime stats for Apex Legends player: {await clean_escape(data['data']['metadata']['platformUserHandle'])}, on platform: {await clean_escape(platform['name'])}")
-            embed.set_author(name="paperplane", icon_url="https://cdn.discordapp.com/embed/avatars/0.png")
+                return
+            embed = discord.Embed(title=f"{self.bot.user.name} showing lifetime stats for Apex Legends player: {await clean_escape(data['data']['metadata']['platformUserHandle'])}, on platform: {await clean_escape(platform['name'])}")
+            embed.set_author(name=self.bot.user.name, icon_url=self.bot.user.avatar_url_as(static_format='png', size=1024))
             embed.set_thumbnail(url=data['data']['metadata']['avatarUrl'])
             for stat in data['data']['stats']:
                 embed.add_field(name=stat["metadata"]["name"], value=stat["displayValue"], inline=True)

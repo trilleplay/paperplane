@@ -41,6 +41,18 @@ class ApexPlatformConverter(commands.Converter):
         except KeyError:
             return("invalid")
 
+class Division_2PlatformConverter(commands.Converter):
+    async def convert(self, ctx, argument):
+        ValidPlatforms = {
+            "XBOX": {"value": "xbl", "name": "Xbox"},
+            "PS4": {"value": "psn", "name": "PSN"},
+            "UPLAY": {"value": "uplay", "name": "Uplay"}
+        }
+        try:
+            return(ValidPlatforms[f"{argument.upper()}"])
+        except KeyError:
+            return("invalid")
+
 class BungieMembershipTypeConverter(commands.Converter):
     async def convert(self, ctx, argument):
         BungieMembershipType_list = {

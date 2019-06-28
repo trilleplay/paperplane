@@ -25,7 +25,7 @@ class Destiny_2(commands.Cog, name="Destiny 2"):
             return
         async with ctx.typing():
             try:
-                embed = await destiny_fetch(self.aiohttpclient, platform, username)
+                embed = await destiny_fetch(self.aiohttpclient, self.bot.user.name, platform, username)
             except Forbidden:
                 await ctx.send(f"Uh oh, something seems to be inproperly configured. Please contact the bot maintainer about this over at discord.gg/{await invite()}\nIf you're the bot maintainer please make sure your API keys are valid.")
                 return
@@ -43,6 +43,7 @@ class Destiny_2(commands.Cog, name="Destiny 2"):
                 return
             except InvalidPlatform:
                 await ctx.send("Shit, something just happend that there are checks in place for how did this happen, please open an issue here: <https://github.com/trilleplay/paperplane/issues>.")
+                return
             await ctx.send(embed=embed)
 
 
