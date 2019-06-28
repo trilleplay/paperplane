@@ -10,13 +10,15 @@ class Config(commands.Cog, name="Configure"):
     async def set_prefix(self, ctx, prefix: str = None):
         guild = await GuildSettings.get(guild_id=ctx.guild.id)
         if prefix is None:
-            await ctx.send(f"Since you did not provide your new prefix, here is your current prefix: ``{await clean_escape(guild.prefix)}``")
+            frick_strings = await clean_escape(guild.prefix)
+            await ctx.send(f"Since you did not provide your new prefix, here is your current prefix: ``{frick_strings}``")
         elif len(prefix) > 5:
             await ctx.send("A prefix can't be longer then five characters, sorry :(")
         else:
             guild.prefix = prefix
             await guild.save()
-            await ctx.send(f"🎉 Alright, your prefix has now been changed to: ``{await clean_escape(guild.prefix)}``")
+            frick_strings = await clean_escape(guild.prefix)
+            await ctx.send(f"🎉 Alright, your prefix has now been changed to: ``{frick_strings}``")
 
 def setup(bot):
     bot.add_cog(Config(bot))
