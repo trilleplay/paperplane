@@ -1,4 +1,4 @@
 discord.py==1.2.2
 PyYAML==5.1.1
-asyncpg==0.18.3
+asyncpg==0.21.0
 tortoise-orm==0.12.2 
